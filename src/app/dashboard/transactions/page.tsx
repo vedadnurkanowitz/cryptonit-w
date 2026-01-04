@@ -50,6 +50,24 @@ const transactions = [
     date: "Oct 02, 2023",
     status: "Cancelled",
   },
+  {
+    id: "6",
+    type: "Buy",
+    asset: "Solana",
+    amount: "+25.00 SOL",
+    value: "$5,125.00",
+    date: "Sep 28, 2023",
+    status: "Completed",
+  },
+  {
+    id: "7",
+    type: "Sell",
+    asset: "Bitcoin",
+    amount: "-0.05 BTC",
+    value: "$3,100.00",
+    date: "Sep 25, 2023",
+    status: "Completed",
+  },
 ];
 
 export default function TransactionsPage() {
@@ -101,119 +119,101 @@ export default function TransactionsPage() {
               padding: "8px 12px 8px 40px",
               color: "#fff",
               width: "100%",
+              marginBottom: "24px",
             }}
           />
         </div>
 
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse" }}>
-            <thead>
-              <tr
-                style={{
-                  textAlign: "left",
-                  color: "var(--text-secondary)",
-                  fontSize: "14px",
-                  borderBottom: "1px solid #222",
-                }}
+        <div className={styles.transactionsTableContainer}>
+          <div className={styles.transactionsHeader}>
+            <span style={{ paddingLeft: "20px" }}>Type</span>
+            <span>Asset</span>
+            <span style={{ textAlign: "right" }}>Amount</span>
+            <span style={{ textAlign: "right" }}>Value</span>
+            <span>Date</span>
+            <span style={{ textAlign: "center" }}>Status</span>
+          </div>
+
+          <div>
+            {transactions.map((tx, i) => (
+              <motion.div
+                key={tx.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05 }}
+                className={styles.transactionRow}
               >
-                <th style={{ padding: "16px 20px" }}>Type</th>
-                <th style={{ padding: "16px 20px" }}>Asset</th>
-                <th style={{ padding: "16px 20px" }}>Amount</th>
-                <th style={{ padding: "16px 20px" }}>Value</th>
-                <th style={{ padding: "16px 20px" }}>Date</th>
-                <th style={{ padding: "16px 20px" }}>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {transactions.map((tx, i) => (
-                <motion.tr
-                  key={tx.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  style={{
-                    borderBottom: "1px solid rgba(255,255,255,0.03)",
-                    fontSize: "15px",
-                  }}
-                >
-                  <td style={{ padding: "16px 20px" }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "10px",
-                      }}
-                    >
-                      <div
-                        style={{
-                          padding: "6px",
-                          background:
-                            tx.type === "Buy"
-                              ? "rgba(0, 255, 157, 0.1)"
-                              : tx.type === "Sell"
-                              ? "rgba(255, 77, 77, 0.1)"
-                              : "rgba(255, 255, 255, 0.05)",
-                          color:
-                            tx.type === "Buy"
-                              ? "#00ff9d"
-                              : tx.type === "Sell"
-                              ? "#ff4d4d"
-                              : "#ccc",
-                          borderRadius: "8px",
-                        }}
-                      >
-                        {tx.type === "Buy" ? (
-                          <ArrowDownLeft size={16} />
-                        ) : tx.type === "Sell" ? (
-                          <ArrowUpRight size={16} />
-                        ) : (
-                          <RefreshCcw size={16} />
-                        )}
-                      </div>
-                      {tx.type}
-                    </div>
-                  </td>
-                  <td style={{ padding: "16px 20px", fontWeight: "600" }}>
-                    {tx.asset}
-                  </td>
-                  <td style={{ padding: "16px 20px" }}>{tx.amount}</td>
-                  <td style={{ padding: "16px 20px" }}>{tx.value}</td>
-                  <td
+                {/* 1. Type */}
+                <div className={styles.transactionType}>
+                  <div
+                    className={styles.transactionIcon}
                     style={{
-                      padding: "16px 20px",
-                      color: "var(--text-secondary)",
+                      background:
+                        tx.type === "Buy"
+                          ? "rgba(0, 255, 157, 0.1)"
+                          : tx.type === "Sell"
+                          ? "rgba(255, 77, 77, 0.1)"
+                          : "rgba(255, 255, 255, 0.05)",
+                      color:
+                        tx.type === "Buy"
+                          ? "#00ff9d"
+                          : tx.type === "Sell"
+                          ? "#ff4d4d"
+                          : "#ccc",
                     }}
                   >
-                    {tx.date}
-                  </td>
-                  <td style={{ padding: "16px 20px" }}>
-                    <span
-                      style={{
-                        padding: "4px 10px",
-                        borderRadius: "100px",
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        background:
-                          tx.status === "Completed"
-                            ? "rgba(0, 255, 157, 0.1)"
-                            : tx.status === "Pending"
-                            ? "rgba(255, 165, 0, 0.1)"
-                            : "rgba(255, 77, 77, 0.1)",
-                        color:
-                          tx.status === "Completed"
-                            ? "#00ff9d"
-                            : tx.status === "Pending"
-                            ? "#ffa500"
-                            : "#ff4d4d",
-                      }}
-                    >
-                      {tx.status}
-                    </span>
-                  </td>
-                </motion.tr>
-              ))}
-            </tbody>
-          </table>
+                    {tx.type === "Buy" ? (
+                      <ArrowDownLeft size={16} />
+                    ) : tx.type === "Sell" ? (
+                      <ArrowUpRight size={16} />
+                    ) : (
+                      <RefreshCcw size={16} />
+                    )}
+                  </div>
+                  <span style={{ fontWeight: "500" }}>{tx.type}</span>
+                </div>
+
+                {/* 2. Asset */}
+                <div style={{ fontWeight: "600" }}>{tx.asset}</div>
+
+                {/* 3. Amount */}
+                <div style={{ textAlign: "right" }}>{tx.amount}</div>
+
+                {/* 4. Value */}
+                <div
+                  style={{ textAlign: "right", color: "var(--text-secondary)" }}
+                >
+                  {tx.value}
+                </div>
+
+                {/* 5. Date */}
+                <div style={{ color: "var(--text-secondary)" }}>{tx.date}</div>
+
+                {/* 6. Status */}
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <span
+                    className={styles.transactionStatus}
+                    style={{
+                      background:
+                        tx.status === "Completed"
+                          ? "rgba(0, 255, 157, 0.1)"
+                          : tx.status === "Pending"
+                          ? "rgba(255, 165, 0, 0.1)"
+                          : "rgba(255, 77, 77, 0.1)",
+                      color:
+                        tx.status === "Completed"
+                          ? "#00ff9d"
+                          : tx.status === "Pending"
+                          ? "#ffa500"
+                          : "#ff4d4d",
+                    }}
+                  >
+                    {tx.status}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

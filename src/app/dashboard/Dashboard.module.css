@@ -474,7 +474,6 @@
   grid-template-columns: 2fr 1fr 1fr 1fr;
   padding: 12px 20px;
   color: var(--text-secondary);
-  color: var(--text-secondary);
   font-size: 14px;
 }
 
@@ -518,12 +517,46 @@
     width: 100%;
   }
 
-  .marketTableHeaders,
-  .marketTableRow {
-    grid-template-columns: 1.5fr 1fr 1.2fr 80px;
-    gap: 8px;
-    padding: 16px 12px;
+  .marketTableHeaders {
+    display: none; /* Hide headers on mobile */
   }
+
+  .marketTableRow {
+    grid-template-columns: 1fr auto; /* Name + Price/Action */
+    grid-template-areas:
+      "info price"
+      "info action";
+    gap: 12px;
+    padding: 16px 0;
+    align-items: center;
+  }
+
+  .marketAssetInfo {
+    grid-area: info;
+  }
+
+  .marketTableRow > *:nth-child(2) {
+    /* Price */
+    grid-area: price;
+    text-align: right;
+  }
+
+  .marketTableRow > *:nth-child(3) {
+    /* Change/Trend */
+    display: flex; /* Hide trend text wrapper to customize */
+    justify-content: flex-end;
+    font-size: 13px;
+    grid-column: 2; /* Put below price */
+  }
+
+  .marketTableRow > *:nth-child(4) {
+    /* Button */
+    display: none; /* Hide button by default on mobile rows, or make it small icon */
+  }
+
+  /* Alternative Mobile View: Show button, hide trend if needed, or stack differently */
+  /* Let's try: 3 cols: Asset, Trend, Price. Button hidden or bottom sheet. */
+  /* Actually, let's keep it simple: Asset (Left), Price+Trend (Right stack) */
 }
 
 @media (max-width: 1024px) {
@@ -798,8 +831,6 @@
   font-size: 16px;
   font-weight: 600;
   color: white;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
 }
 
 .assetTrend {
@@ -856,4 +887,144 @@
 .assetItem:hover .assetChevron {
   opacity: 1;
   transform: translateX(0);
+}
+
+/* Transactions Styles */
+.transactionsTableContainer {
+  width: 100%;
+}
+
+.transactionsHeader {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 0.8fr 1fr 120px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.transactionRow {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 0.8fr 1fr 120px;
+  padding: 16px 20px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.transactionRow:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.transactionType {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.transactionIcon {
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transactionStatus {
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  width: fit-content;
+  text-align: center;
+  display: inline-block;
+}
+
+@media (max-width: 1024px) {
+  .transactionsHeader,
+  .transactionRow {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 100px; /* Hide Date on tablet? Or keep squished */
+  }
+  .transactionsHeader > :nth-child(5),
+  .transactionRow > :nth-child(5) {
+    display: none; /* Hide Date on Tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .transactionsHeader {
+    display: none;
+  }
+
+  .transactionRow {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "type amount"
+      "asset value"
+      "status status";
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 12px;
+    background: var(--surface);
+  }
+
+  /* Assign areas */
+  .transactionRow > div:nth-child(1) {
+    grid-area: type;
+  }
+  .transactionRow > div:nth-child(2) {
+    grid-area: asset;
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-top: -4px;
+    padding-left: 38px;
+  }
+  .transactionRow > div:nth-child(3) {
+    grid-area: amount;
+    text-align: right;
+    font-weight: 600;
+  }
+  .transactionRow > div:nth-child(4) {
+    grid-area: value;
+    text-align: right;
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-top: -4px;
+  }
+  .transactionRow > div:nth-child(5) {
+    display: none;
+  } /* Hide Date on mobile */
+  .transactionRow > div:nth-child(6) {
+    grid-area: status;
+    margin-top: 8px;
+    padding-left: 38px;
+  }
+}
+
+/* Specific Market Mobile Overrides */
+@media (max-width: 768px) {
+  .marketAssetInfo {
+    grid-area: info;
+  }
+
+  /* Target direct children of marketTableRow based on the React component structure */
+  .marketTableRow > span:nth-of-type(1) {
+    /* Price */
+    grid-area: price;
+    text-align: right;
+  }
+
+  .marketTableRow > span:nth-of-type(2) {
+    /* Trend/Change */
+    grid-column: 2;
+    justify-content: flex-end;
+  }
+
+  .marketTableRow > div:last-child {
+    /* Button container */
+    display: none;
+  }
 }
