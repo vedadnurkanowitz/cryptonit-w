@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useState, Suspense } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import {
   LayoutDashboard,
@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import styles from "./Dashboard.module.css";
 import { motion, AnimatePresence } from "framer-motion";
+import DashboardSearch from "./DashboardSearch";
 
 export default function DashboardLayout({
   children,
@@ -25,7 +26,6 @@ export default function DashboardLayout({
 }) {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -174,25 +174,21 @@ export default function DashboardLayout({
             <p>Welcome back, Alex!</p>
           </div>
           <div className={styles.headerActions}>
-            <div className={styles.searchWrapper}>
-              <Search className={styles.searchIcon} size={18} />
-              <input
-                type="text"
-                placeholder="Search assets..."
-                className={styles.searchInput}
-                defaultValue={searchParams.get("search") || ""}
-                onChange={(e) => {
-                  const term = e.target.value;
-                  if (term) {
-                    router.push(
-                      `/dashboard?search=${encodeURIComponent(term)}`
-                    );
-                  } else {
-                    router.push("/dashboard");
-                  }
-                }}
-              />
-            </div>
+            <Suspense
+              fallback={
+                <div className={styles.searchWrapper}>
+                  <Search className={styles.searchIcon} size={18} />
+                  <input
+                    type="text"
+                    placeholder="Search assets..."
+                    className={styles.searchInput}
+                    disabled
+                  />
+                </div>
+              }
+            >
+              <DashboardSearch />
+            </Suspense>
             <button onClick={handleLogout} className={styles.signOutBtn}>
               <LogOut size={18} />
               <span className="hidden md:inline">Sign Out</span>
