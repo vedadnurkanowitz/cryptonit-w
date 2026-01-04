@@ -1,0 +1,300 @@
+.main {
+  padding: 140px 0 100px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 120px;
+  position: relative;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(0, 255, 157, 0.1);
+  color: var(--primary);
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.title {
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 800;
+  letter-spacing: -4px;
+  line-height: 0.9;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, #fff 0%, #666 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lead {
+  font-size: 22px;
+  color: #888;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Values Section */
+.valuesSection {
+  padding: 100px 0;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.sectionHeader h2 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+.sectionHeader p {
+  color: #888;
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.valueCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 48px;
+  border-radius: 40px;
+  transition: all 0.4s ease;
+}
+
+.valueCard:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--primary);
+  transform: translateY(-8px);
+}
+
+.iconWrapper {
+  width: 64px;
+  height: 64px;
+  background: rgba(0, 255, 157, 0.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  margin-bottom: 32px;
+}
+
+.valueCard h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.valueCard p {
+  color: #888;
+  line-height: 1.6;
+}
+
+/* Positions Section */
+.positionsSection {
+  padding: 120px 0;
+}
+
+.positionsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 64px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 32px;
+}
+
+.positionsHeader h2 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.filterWrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.filterBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 99px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.activeFilter {
+  background: var(--primary);
+  color: #000;
+  border-color: var(--primary);
+}
+
+.positionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.positionItem {
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 32px 48px;
+  border-radius: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.positionItem:hover {
+  background: #111;
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(8px);
+}
+
+.posInfo h4 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.posMeta {
+  display: flex;
+  gap: 20px;
+  color: #666;
+  font-size: 14px;
+}
+
+.applyBtn {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.positionItem:hover .applyBtn {
+  background: var(--primary);
+  color: #000;
+}
+
+/* Perks Section */
+.perksSection {
+  padding: 100px 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 157, 0.03),
+    transparent 70%
+  );
+}
+
+.perksGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.perkCard {
+  text-align: center;
+  padding: 32px;
+}
+
+.perkIcon {
+  margin-bottom: 24px;
+  color: var(--primary);
+}
+
+.perkCard h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.perkCard p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .perksGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    margin-bottom: 60px;
+  }
+  .title {
+    font-size: 40px;
+    letter-spacing: -1.5px;
+  }
+  .lead {
+    font-size: 18px;
+    padding: 0 24px;
+  }
+  .valuesGrid {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+  }
+  .positionsHeader h2 {
+    font-size: 32px;
+  }
+  .positionsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 0 24px 32px;
+  }
+  .filterWrapper {
+    flex-wrap: wrap;
+  }
+  .positionsList {
+    padding: 0 16px;
+  }
+  .positionItem {
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .applyBtn {
+    width: 100%;
+    text-align: center;
+  }
+  .perksGrid {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+  }
+}

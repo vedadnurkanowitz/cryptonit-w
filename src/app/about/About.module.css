@@ -1,0 +1,472 @@
+.main {
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero {
+  padding: 180px 0 100px;
+  text-align: center;
+  position: relative;
+}
+
+.title {
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 800;
+  letter-spacing: -4px;
+  line-height: 0.9;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, #fff 0%, #666 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lead {
+  font-size: 22px;
+  color: #888;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.story {
+  padding: 120px 0;
+  background: radial-gradient(
+    circle at bottom left,
+    rgba(0, 255, 157, 0.05),
+    transparent 40%
+  );
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.storyTitle {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 32px;
+  letter-spacing: -2px;
+}
+
+.storyText {
+  color: #888;
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.timeline {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 24px;
+}
+
+.year {
+  font-weight: 800;
+  color: var(--primary);
+  font-size: 20px;
+  min-width: 60px;
+}
+
+.event h4 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.event p {
+  color: #666;
+  font-size: 14px;
+}
+
+.mission {
+  padding: 120px 0;
+  background: #050505;
+  border-radius: 64px;
+  margin: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.sectionTitle {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+
+.stats {
+  display: flex;
+  gap: 64px;
+  margin-top: 64px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -2px;
+}
+
+.statLabel {
+  font-size: 14px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 8px;
+}
+
+.values {
+  padding: 120px 0;
+}
+
+.centeredTitle {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 64px;
+  letter-spacing: -1px;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.valueCard {
+  background: #0a0a0a;
+  padding: 48px;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.valueCard:hover {
+  transform: translateY(-12px);
+  border-color: var(--primary);
+  background: linear-gradient(135deg, #0a0a0a 0%, #111 100%);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 157, 0.1);
+}
+
+.valueIcon {
+  margin-bottom: 32px;
+}
+
+.valueCard h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.valueCard p {
+  color: #888;
+  line-height: 1.7;
+}
+
+.impact {
+  padding: 120px 0;
+  text-align: center;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 157, 0.03),
+    transparent 70%
+  );
+}
+
+.partners {
+  padding: 80px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.partnerGrid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 48px;
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+.partnerItem {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #fff;
+}
+
+.team {
+  padding: 120px 0;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.teamMember {
+  text-align: center;
+}
+
+.memberAvatar {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 32px;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+}
+
+.teamMember:hover .memberAvatar {
+  border-color: var(--primary);
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.memberName {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.memberRole {
+  color: #666;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.memberRolePrimary {
+  color: var(--primary);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.joinSection {
+  padding: 160px 0;
+  text-align: center;
+}
+
+.joinCard {
+  background: var(--primary);
+  padding: 100px 48px;
+  border-radius: 64px;
+  color: #000;
+}
+
+.joinCard h2 {
+  font-size: clamp(32px, 6vw, 64px);
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -2px;
+}
+
+.joinCard p {
+  font-size: 20px;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+  .storyGrid {
+    grid-template-columns: 1fr;
+    gap: 64px;
+  }
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 120px 0 60px;
+  }
+  .title {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+  .lead {
+    font-size: 18px;
+    padding: 0 24px;
+  }
+  .story {
+    padding: 80px 0;
+  }
+  .storyTitle {
+    font-size: 32px;
+  }
+  .storyGrid {
+    gap: 40px;
+    padding: 0 24px;
+  }
+  .valuesGrid {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+  }
+  .teamGrid {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+  }
+  .stats {
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    text-align: center;
+  }
+  .statValue {
+    font-size: 40px;
+  }
+  .mission {
+    margin: 0 16px;
+    padding: 60px 24px;
+    border-radius: 32px;
+  }
+  .joinCard {
+    margin: 0 16px;
+    padding: 60px 24px;
+    border-radius: 32px;
+  }
+  .joinCard h2 {
+    font-size: 36px;
+  }
+  .joinCard p {
+    font-size: 16px;
+  }
+}
+
+/* Growth Visual Styles */
+.missionImage {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.5) inset;
+}
+
+.gridPattern {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.5;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+}
+
+.chartContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 60px;
+  gap: 20px;
+  z-index: 1;
+}
+
+.chartBar {
+  flex: 1;
+  background: linear-gradient(
+    180deg,
+    var(--primary) 0%,
+    rgba(0, 255, 157, 0) 100%
+  );
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  transition: all 0.4s ease;
+  min-height: 20px;
+  opacity: 0.6;
+}
+
+.chartBar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 157, 0.8);
+}
+
+.chartBar:hover {
+  opacity: 1;
+  transform: scaleY(1.02);
+  filter: brightness(1.2);
+}
+
+.floatingBadge {
+  position: absolute;
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 20px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.floatingBadge:hover {
+  transform: scale(1.05) translateY(-5px) !important;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.badgeIcon {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 255, 157, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+}
+
+.badgeContent h5 {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.badgeContent span {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.5px;
+}
